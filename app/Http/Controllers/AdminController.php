@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Student;
 use App\User;
-use App\Courses;
+use App\Course;
 
 class AdminController extends Controller
 {

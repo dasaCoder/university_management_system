@@ -42,6 +42,12 @@
                                     </select>
                                 </div>
                               
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Mobile no</label>
+                                    <input id="telephone" name="telephone" type="text" class="form-control" aria-required="true" aria-invalid="false" value="">
+                                </div>
+
+
                                 <div>
                                     <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
                                         <i class="fa fa-save fa-lg"></i>&nbsp;
