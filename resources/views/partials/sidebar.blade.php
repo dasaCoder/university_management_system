@@ -1,9 +1,11 @@
+@auth
 <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
         <a href="#">
             <img src="{{asset('images/icon/logo.png')}}" alt="UniSys" />
         </a>
     </div>
+        
     <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
@@ -35,8 +37,29 @@
                 
                 @endrole
 
+                @role('student')
+                    <li>
+                        <a href="{{ url('student')}}">
+                            <i class="fas fa-home"></i>Home</a>
+                    </li>
 
+
+                @endrole
             </ul>
         </nav>
     </div>
+ 
 </aside>
+
+@else 
+
+<aside class="menu-sidebar d-none d-lg-block" style="height: fit-content;">
+
+    <div class="logo">
+        <a href="#">
+            <img src="{{asset('images/icon/logo.png')}}" alt="UniSys" />
+        </a>
+    </div>
+</aside>
+
+@endauth

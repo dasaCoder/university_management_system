@@ -31,8 +31,11 @@
 
 <body class="animsition">
     <div class="page-wrapper">
+
+        
         @include('partials.sidebar')
         @include('partials.mobilenavbar')
+        
         <div class="page-container">
 
             @include('partials.navbar')
