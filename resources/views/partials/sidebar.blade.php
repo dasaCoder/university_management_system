@@ -43,6 +43,16 @@
                             <i class="fas fa-home"></i>Home</a>
                     </li>
 
+                    <li>
+                        <a href="{{ url('student')}}">
+                            <i class="fas fa-clock"></i>Time Table</a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url('student')}}">
+                            <i class="fas fa-chart-line"></i>Results</a>
+                    </li>
+
 
                 @endrole
             </ul>
