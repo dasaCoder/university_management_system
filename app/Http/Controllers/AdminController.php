@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Student;
 use App\User;
 use App\Course;
+use App\Degree;
 
 class AdminController extends Controller
 {
@@ -33,6 +34,7 @@ class AdminController extends Controller
     }
 
     public function courses() {
-
+        $degrees = Degree::all();
+        return view('admin.courses', compact('degrees',$degrees));
     }
 }

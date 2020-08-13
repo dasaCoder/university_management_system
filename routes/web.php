@@ -38,8 +38,10 @@ Route::get('/lecturer', 'LecturerController@index')->name('lecturer');
 Route::get('/student', 'StudentController@index')->name('student');
 
 Route::post('/student', 'AdminController@createStudent');
-Route::get('/admin/students', 'AdminController@students');
-Route::get('/admin/courses', 'AdminController@courses');
+Route::get('/admin/students', 'AdminController@students')->name('admin.students');
+Route::get('/admin/courses', 'AdminController@courses')->name('admin.courses');
+Route::post('/course', 'CourseController@create');
+
 
 
 

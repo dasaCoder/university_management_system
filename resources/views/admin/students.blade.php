@@ -32,6 +32,7 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Acacemic Year</label>
                                     <select class="form-control" name="acyear">
                                         <option selected="selected">All</option>
                                         <option value="">2019/2020</option>
