@@ -34,6 +34,10 @@ Route::get('/register/admin', function() {
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('/admin', 'AdminController@index')->name('admin');
 Route::get('/lecturer', 'LecturerController@index')->name('lecturer');
+
 Route::get('/student', 'StudentController@index')->name('student');
+Route::post('/student', 'StudentController@create');
+
+Route::get('/admin/students', 'AdminController@students')->name('admin.students');
 
 
