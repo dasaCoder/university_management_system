@@ -18,7 +18,7 @@ class CreateCoursesTable extends Migration
             $table->string('name');
             $table->string('acyear');
             $table->string('courseId');
-            $table->integer('degee_id');
+            $table->integer('degree_id');
             $table->timestamps();
         });
     }

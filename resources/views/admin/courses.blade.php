@@ -28,7 +28,7 @@
 
                                 <div class="form-group">
                                     <label for="cc-payment" class="control-label mb-1">Degree</label>                                    
-                                    <select class="form-control" name="degreeId">
+                                    <select class="form-control" name="degree_id">
 
                                         @foreach ($degrees as $degree)
                                             <option value="{{ $degree->id}}">{{ $degree->name }}</option>
@@ -71,7 +71,7 @@
                                 <h3 class="text-center title-2">Add a Degree</h3>
                             </div>
                             <hr>
-                            <form action="{{ url('course') }}" method="post" novalidate="novalidate">
+                            <form action="{{ url('degree') }}" method="post" novalidate="novalidate">
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                     <label for="cc-payment" class="control-label mb-1">Name</label>

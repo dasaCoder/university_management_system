@@ -41,6 +41,8 @@ Route::post('/student', 'AdminController@createStudent');
 Route::get('/admin/students', 'AdminController@students')->name('admin.students');
 Route::get('/admin/courses', 'AdminController@courses')->name('admin.courses');
 Route::post('/course', 'CourseController@create');
+// Route::get('/degrees', 'DegreeController@home');
+Route::post('/degree', 'DegreeController@create');
 
 
 
