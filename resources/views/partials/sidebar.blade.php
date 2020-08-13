@@ -14,20 +14,12 @@
                         <li>
                             <a href="{{ url('admin/students')}}">Students</a>
                         </li>
-                        <li>
-                            <a href="index2.html">Dashboard 2</a>
-                        </li>
-                        <li>
-                            <a href="index3.html">Dashboard 3</a>
-                        </li>
-                        <li>
-                            <a href="index4.html">Dashboard 4</a>
-                        </li>
+                        
                     </ul>
                 </li>
                 <li>
-                    <a href="chart.html">
-                        <i class="fas fa-chart-bar"></i>Charts</a>
+                    <a href="{{ url('admin/courses')}}">
+                        <i class="fas fa-chart-bar"></i>Courses</a>
                 </li>
                 
             </ul>

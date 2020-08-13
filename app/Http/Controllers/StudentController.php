@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Student;
+use App\User;
 
 class StudentController extends Controller
 {
@@ -17,7 +19,5 @@ class StudentController extends Controller
         return view('student.dashboard', compact('students',$students));
     }
 
-    public function create(Request $request) {
-        dd($request->post());
-    }
+
 }
