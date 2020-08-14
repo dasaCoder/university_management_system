@@ -12,7 +12,7 @@
 
                 @role('admin')
                     <li>
-                        <a href="{{url('admin/dashboard')}}">
+                        <a href="{{url('admin')}}">
                         <i class="fas fa-lock"></i> Home</a>
                     </li>
                     <li class="active has-sub">

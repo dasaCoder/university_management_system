@@ -12,7 +12,11 @@ use App\Degree;
 class AdminController extends Controller
 {
     public function index(){
-        return view('admin.dashboard');
+        $degrees = Degree::all();
+        $courses = Course::all();
+        $students = User::role('student')->get();
+
+        return view('admin.dashboard')->with('degrees',$degrees)->with('courses',$courses)->with('students',$students);
     }
 
     public function students(){
