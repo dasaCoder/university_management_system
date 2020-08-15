@@ -8,6 +8,8 @@ use App\Student;
 use App\User;
 use App\Course;
 use App\Degree;
+use App\LectureSession;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -15,8 +17,10 @@ class AdminController extends Controller
         $degrees = Degree::all();
         $courses = Course::all();
         $students = User::role('student')->get();
+        $lec_sessions = LectureSession::whereDate('start_time', Carbon::today(+5.30))->get();
+        //dd($lec_sessions);
 
-        return view('admin.dashboard')->with('degrees',$degrees)->with('courses',$courses)->with('students',$students);
+        return view('admin.dashboard')->with('degrees',$degrees)->with('courses',$courses)->with('students',$students)->with('lec_sessions',$lec_sessions);
     }
 
     public function students(){
@@ -38,7 +42,12 @@ class AdminController extends Controller
     }
 
     public function courses() {
-        $degrees = Degree::all();
-        return view('admin.courses', compact('degrees',$degrees));
+        $data = [];
+        
+        $data['degrees'] = Degree::all();
+        $data['lecturers'] = User::role('lecturer')->get();
+        $data['courses'] = Course::all();
+
+        return view('admin.courses')->with('data',$data);
     }
 }

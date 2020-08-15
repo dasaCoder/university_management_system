@@ -4,7 +4,78 @@
    
     <div class="container">
         <div class="container-fluid">
+
             <div class="row">
+                <div class="col-lg-7">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="mr-2 fa fa-align-justify"></i>
+                            <strong class="card-title" v-if="headerText">Create Course Subscription for Semester</strong>
+                        </div>
+
+                        <div class="card-body">
+                            <form action="{{url('course/subscription')}}" method="post" novalidate="novalidate">
+                                {{ csrf_field() }}
+                                
+
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Degree</label>                                    
+                                    <select class="form-control" name="degree_id">
+
+                                        @foreach ($data['courses'] as $course)
+                                            <option value="{{ $course->id}}">{{ $course->name }}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Semester</label>
+                                    <select class="form-control" name="semester">
+                                        <option selected="selected">Semester I</option>
+                                        <option value="">Semester II</option>
+                                        <option value="">Semester III</option>
+                                        <option value="">Semester IV</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Acacemic Year</label>
+                                    <select class="form-control" name="ac_year">
+                                        <option value="" selected>2019/2020</option>
+                                        <option value="">2020/2021</option>
+                                        <option value="">2021/2022</option>
+                                        <option value="">2022/2023</option>
+        
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Degree</label>                                    
+                                    <select class="form-control" name="degree_id">
+
+                                        @foreach ($data['lecturers'] as $lecturer)
+                                            <option value="{{ $lecturer->id}}">{{ $lecturer->name }}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+
+                                <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                                    <i class="fa fa-save fa-lg"></i>&nbsp;
+                                    <span id="payment-button-amount">Save</span>
+                                    <span id="payment-button-sending" style="display:none;">Sending…</span>
+                                </button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+
                 <div class="col-lg-6">
                     <div class="card">
                         
@@ -30,7 +101,7 @@
                                     <label for="cc-payment" class="control-label mb-1">Degree</label>                                    
                                     <select class="form-control" name="degree_id">
 
-                                        @foreach ($degrees as $degree)
+                                        @foreach ($data['degrees'] as $degree)
                                             <option value="{{ $degree->id}}">{{ $degree->name }}</option>
                                         @endforeach
 

@@ -41,6 +41,9 @@ Route::post('/student', 'AdminController@createStudent');
 Route::get('/admin/students', 'AdminController@students')->name('admin.students');
 Route::get('/admin/courses', 'AdminController@courses')->name('admin.courses');
 Route::post('/course', 'CourseController@create');
+Route::post('course/subscription','CourseController@createSubscription');
+
+Route::post('/shedule/course','CourseController@shedule');
 // Route::get('/degrees', 'DegreeController@home');
 Route::post('/degree', 'DegreeController@create');
 
