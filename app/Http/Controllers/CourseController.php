@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Course;
 use App\LectureSession;
+use App\CourseSemSubscription;
 use DateTime;
 use Carbon\Carbon;
 
@@ -28,5 +29,12 @@ class CourseController extends Controller
         $session->save();
 
         return redirect()->route('admin');
+    }
+
+    public function createSubscription(Request $request) {
+        $subscription = CourseSemSubscription::create($request->post());
+
+        return redirect()->route('admin.courses');
+
     }
 }

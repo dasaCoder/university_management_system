@@ -19,8 +19,8 @@
                                 
 
                                 <div class="form-group">
-                                    <label for="cc-payment" class="control-label mb-1">Degree</label>                                    
-                                    <select class="form-control" name="degree_id">
+                                    <label for="cc-payment" class="control-label mb-1">Course Module</label>                                    
+                                    <select class="form-control" name="course_id">
 
                                         @foreach ($data['courses'] as $course)
                                             <option value="{{ $course->id}}">{{ $course->name }}</option>
@@ -32,27 +32,27 @@
                                 <div class="form-group">
                                     <label for="cc-payment" class="control-label mb-1">Semester</label>
                                     <select class="form-control" name="semester">
-                                        <option selected="selected">Semester I</option>
-                                        <option value="">Semester II</option>
-                                        <option value="">Semester III</option>
-                                        <option value="">Semester IV</option>
+                                        <option value="Semester I" selected="selected">Semester I</option>
+                                        <option value="Semester II">Semester II</option>
+                                        <option value="Semester III">Semester III</option>
+                                        <option value="Semester IV">Semester IV</option>
                                     </select>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="cc-payment" class="control-label mb-1">Acacemic Year</label>
                                     <select class="form-control" name="ac_year">
-                                        <option value="" selected>2019/2020</option>
-                                        <option value="">2020/2021</option>
-                                        <option value="">2021/2022</option>
-                                        <option value="">2022/2023</option>
+                                        <option value="2019/2020" selected>2019/2020</option>
+                                        <option value="2020/2021">2020/2021</option>
+                                        <option value="2021/2022">2021/2022</option>
+                                        <option value="2022/2023">2022/2023</option>
         
                                     </select>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="cc-payment" class="control-label mb-1">Degree</label>                                    
-                                    <select class="form-control" name="degree_id">
+                                    <label for="cc-payment" class="control-label mb-1">Lecturer</label>                                    
+                                    <select class="form-control" name="lecturer_id">
 
                                         @foreach ($data['lecturers'] as $lecturer)
                                             <option value="{{ $lecturer->id}}">{{ $lecturer->name }}</option>
@@ -110,14 +110,14 @@
 
                                 <div class="form-group">
                                     <label for="cc-payment" class="control-label mb-1">Acacemic Year</label>
-                                    <select class="form-control" name="acyear">
-                                        <option selected="selected">All</option>
-                                        <option value="">2019/2020</option>
-                                        <option value="">2020/2021</option>
-                                        <option value="">2021/2022</option>
-                                        <option value="">2022/2023</option>
+                                    <select class="form-control" name="ac_year">
+                                        <option value="2019/2020" selected>2019/2020</option>
+                                        <option value="2020/2021">2020/2021</option>
+                                        <option value="2021/2022">2021/2022</option>
+                                        <option value="2022/2023">2022/2023</option>
         
                                     </select>
+                                   
                                 </div>
 
 

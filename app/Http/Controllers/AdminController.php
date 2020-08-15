@@ -38,7 +38,8 @@ class AdminController extends Controller
 
         $user->assignRole('student');
 
-        return $this->students();
+        return redirect()->route('admin.students');
+
     }
 
     public function courses() {
