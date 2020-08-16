@@ -81,7 +81,7 @@
                                 <tr>
                                     <td>{{$session->course->name}}</td>
                                     <td>{{$session->ac_year}}</td>
-                                    <td>{{$session->course->lecturer->name}}</td>
+                                    <td>{{$session->semSubscription->lecturer->name}}</td>
                                     <td>{{ substr($session->start_time,11,5)." - ".substr($session->end_time,11,5) }}</td>
                                 </tr>
 

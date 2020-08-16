@@ -8,6 +8,7 @@ use App\LectureSession;
 use App\CourseSemSubscription;
 use DateTime;
 use Carbon\Carbon;
+use Auth;
 
 
 class CourseController extends Controller
@@ -35,6 +36,23 @@ class CourseController extends Controller
         $subscription = CourseSemSubscription::create($request->post());
 
         return redirect()->route('admin.courses');
+
+    }
+
+    public function enroll(Request $request) {
+        $user = Auth::user();
+        $subscription = CourseSemSubscription::findOrFail($request->post('subscriptionId'));
+        $user->enrollments()->save($subscription);
+
+        return redirect()->route('student.course',[$request->post('subscriptionId'), $subscription->course_id]);
+    }
+
+    public function unenroll(Request $request) {
+        $user = Auth::user();
+        $subscription = CourseSemSubscription::findOrFail($request->post('subscriptionId'));
+        $user->enrollments()->detach($request->post('subscriptionId'));
+
+        return redirect()->route('student.course',[$request->post('subscriptionId'), $subscription->course_id]);
 
     }
 }

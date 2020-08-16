@@ -34,6 +34,10 @@
                         <a href="{{ url('admin/lecturers')}}">
                             <i class="fas fa-user"></i>Lecturers</a>
                     </li>
+                    <li>
+                        <a href="{{ url('admin/results')}}">
+                            <i class="fas fa-chart-pie"></i>Results</a>
+                    </li>
                 
                 @endrole
 
@@ -49,7 +53,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ url('student')}}">
+                        <a href="{{ url('student/result')}}">
                             <i class="fas fa-chart-line"></i>Results</a>
                     </li>
 

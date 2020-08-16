@@ -17,4 +17,8 @@ class CourseSemSubscription extends Model
     {
         return $this->belongsTo('App\User', 'lecturer_id', );
     }
+
+    public function course() {
+        return $this->belongsTo('App\Course');
+    }
 }

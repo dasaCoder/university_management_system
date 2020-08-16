@@ -36,16 +36,24 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 Route::get('/lecturer', 'LecturerController@index')->name('lecturer');
 
 Route::get('/student', 'StudentController@index')->name('student');
+Route::get('/student/{subscriptionId}/{courseId}', 'StudentController@courseView')->name('student.course');
 
 Route::post('/student', 'AdminController@createStudent');
 Route::get('/admin/students', 'AdminController@students')->name('admin.students');
 Route::get('/admin/courses', 'AdminController@courses')->name('admin.courses');
+Route::get('/admin/results','ResultController@get')->name('admin.results');
+
 Route::post('/course', 'CourseController@create');
 Route::post('course/subscription','CourseController@createSubscription');
 
 Route::post('/shedule/course','CourseController@shedule');
 // Route::get('/degrees', 'DegreeController@home');
 Route::post('/degree', 'DegreeController@create');
+
+Route::post('/enroll','CourseController@enroll');
+Route::post('/unenroll','CourseController@unenroll');
+
+Route::get('/student/result', 'ResultController@stdProfile');
 
 
 

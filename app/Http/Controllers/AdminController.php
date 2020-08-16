@@ -24,9 +24,11 @@ class AdminController extends Controller
     }
 
     public function students(){
-        $students = Student::getStudents();
+        $data = [];
+        $data['students'] = Student::getStudents();
+        $data['degrees'] = Degree::all();
         
-        return view('admin.students', compact('students',$students));
+        return view('admin.students', compact('data',$data));
     }
 
     public function createStudent(Request $request) {
@@ -34,6 +36,12 @@ class AdminController extends Controller
         $user->password = Hash::make($request->post("password"));
         $user->email = $request->post("email");
         $user->name = $request->post("name");
+        $user->acc_year = $request->post("acyear");
+        $user->telephone = $request->post("telephone");
+        $user->degree_id = $request->post("degree_id");
+        $user->save();
+
+        $user->idstr = $user->degree->name."/". substr($request->post("acyear"),0,4)."/".$user->id;
         $user->save();
 
         $user->assignRole('student');

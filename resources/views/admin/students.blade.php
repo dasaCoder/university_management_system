@@ -32,13 +32,23 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Degree</label>                                    
+                                    <select class="form-control" name="degree_id">
+
+                                        @foreach ($data['degrees'] as $degree)
+                                            <option value="{{ $degree->id}}">{{ $degree->name }}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="cc-payment" class="control-label mb-1">Acacemic Year</label>
                                     <select class="form-control" name="acyear">
-                                        <option selected="selected">All</option>
-                                        <option value="">2019/2020</option>
-                                        <option value="">2020/2021</option>
-                                        <option value="">2021/2022</option>
-                                        <option value="">2022/2023</option>
+                                        <option selected value="2019/2020">2019/2020</option>
+                                        <option value="2020/2021">2020/2021</option>
+                                        <option value="2021/2022">2021/2022</option>
+                                        <option value="2022/2023">2022/2023</option>
         
                                     </select>
                                 </div>
@@ -100,7 +110,7 @@
                         </thead>
                         <tbody>
 
-                            @foreach ($students as $student)
+                            @foreach ($data['students'] as $student)
                                 
                                 <tr class="tr-shadow">
                                     
