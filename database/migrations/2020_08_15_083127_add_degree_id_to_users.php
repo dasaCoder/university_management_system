@@ -14,7 +14,7 @@ class AddDegreeIdToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('degree_id');
+            $table->integer('degree_id')->default(0);
         });
     }
 

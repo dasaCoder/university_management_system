@@ -45,6 +45,8 @@
                 @yield('content')             
         
             </div>
+
+            @include('partials.chat')
         </div>
 
     </div>

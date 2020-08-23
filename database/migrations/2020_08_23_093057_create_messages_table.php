@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddAccyearToUsers extends Migration
+class CreateMessagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddAccyearToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-           $table->string('acc_year')->nullable();
+        Schema::create('messages', function (Blueprint $table) {
+            $table->id();
+            $table->string('msg');
+            $table->string('sender_type'); // user or bot
+            $table->integer('owner_id');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class AddAccyearToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('messages');
     }
 }

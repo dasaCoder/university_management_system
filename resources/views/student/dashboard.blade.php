@@ -131,5 +131,4 @@
 
 </div> 
     
-@include('partials.chat')
 @endsection
