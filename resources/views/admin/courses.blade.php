@@ -89,8 +89,7 @@
                                 <div class="form-group">
                                     <label for="cc-payment" class="control-label mb-1">Name</label>
                                     <input id="name" name="name" type="text" class="form-control" aria-required="true" aria-invalid="false" value="">
-                                </div>
-                            
+                                </div>                            
 
                                 <div class="form-group">
                                     <label for="cc-payment" class="control-label mb-1">Course Code</label>
@@ -148,10 +147,17 @@
                                     <label for="cc-payment" class="control-label mb-1">Name</label>
                                     <input id="name" name="name" type="text" class="form-control" aria-required="true" aria-invalid="false" value="">
                                 </div>
+
+                                
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Slug</label>
+                                    <input id="slug" name="slug" type="text" class="form-control" aria-required="true" aria-invalid="false" value="">
+                                </div>
                               
                                 <div class="form-group">
                                     <label for="cc-payment" class="control-label mb-1">Description</label>
-                                    <input id="description" name="description" type="text" class="form-control" aria-required="true" aria-invalid="false" value="">
+                                    {{-- <input id="description" name="description" type="text" class="form-control" aria-required="true" aria-invalid="false" value=""> --}}
+                                    <textarea name="description" id="" cols="30" rows="10" class="form-control"></textarea>
                                 </div>
 
                                 <div>

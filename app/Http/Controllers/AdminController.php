@@ -41,7 +41,7 @@ class AdminController extends Controller
         $user->degree_id = $request->post("degree_id");
         $user->save();
 
-        $user->idstr = $user->degree->name."/". substr($request->post("acyear"),0,4)."/".$user->id;
+        $user->idstr = $user->degree->slug."/". substr($request->post("acyear"),0,4)."/".$user->id;
         $user->save();
 
         $user->assignRole('student');

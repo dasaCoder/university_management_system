@@ -57,4 +57,3 @@ Route::get('/student/result', 'ResultController@stdProfile');
 
 
 
-

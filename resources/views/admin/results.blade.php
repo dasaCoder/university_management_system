@@ -14,7 +14,7 @@
                                 <select class="js-select2" name="subscription_id">
                                     <option value="">---</option>
                                     @foreach ($data['subscriptions'] as $subscription)
-                                        <option value="{{ $subscription->id}}">{{ $subscription->ac_year." ".$subscription->semester." ".$subscription->course->course_id}}</option>
+                                        <option value="{{ $subscription->id}}">{{ $subscription->ac_year." ".$subscription->semester." ".$subscription->course->courseId}}</option>
                                     @endforeach
 
                                 </select>
