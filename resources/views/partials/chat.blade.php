@@ -11,6 +11,10 @@
             .au-card-title{
                 cursor:pointer;
             }
+
+            .au-chat{
+                display: none;
+            }
         </style>
         
         <div class="col-lg-4 chat-window">

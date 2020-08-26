@@ -14,7 +14,10 @@
                                 <select class="js-select2" name="subscription_id">
                                     <option value="">---</option>
                                     @foreach ($data['subscriptions'] as $subscription)
-                                        <option value="{{ $subscription->id}}">{{ $subscription->ac_year." ".$subscription->semester." ".$subscription->course->courseId}}</option>
+                                        <option 
+                                            value="{{ $subscription->id}}" {{ $data['selected_subscription']->id == $subscription->id? 'selected':''}}>
+                                            {{ $subscription->ac_year." ".$subscription->semester." ".$subscription->course->courseId}}
+                                        </option>
                                     @endforeach
 
                                 </select>
@@ -107,8 +110,9 @@
                     url: "{{ url('api/admin/result/mass')}}",
                     method: "post",
                     data: data,
-                    success: fucntion(){
-                        windows.location.reload();
+                    success: ()=>{
+                        alert("Success!");
+                        location.reload();
                     }
                 });
             });

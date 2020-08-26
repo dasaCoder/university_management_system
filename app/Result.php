@@ -17,4 +17,9 @@ class Result extends Model
     {
         return $this->belongsTo('App\CourseSemSubscription', 'enrollment_id');
     }
+
+    public function results() 
+    {
+        return $this->hasMany('App\Result');
+    }
 }

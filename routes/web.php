@@ -53,7 +53,7 @@ Route::post('/degree', 'DegreeController@create');
 Route::post('/enroll','CourseController@enroll');
 Route::post('/unenroll','CourseController@unenroll');
 
-Route::get('/student/result', 'ResultController@stdProfile');
+Route::get('/student/results', 'ResultController@stdProfile');
 
 
 

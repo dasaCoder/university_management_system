@@ -29,11 +29,35 @@ class ResultController extends Controller
     //     $subscription->enrollment($result);
     // }
 
-    public function stdProfile() {
+    // get results for given student
+    public function stdProfile(Request $request) {
         $user = Auth::user();
         $data = [];
 
-        return view('student.result',compact('data',$data));
+        $selected_ac_year = $request->input('ac_year');
+        $selected_semester = $request->get('semester');
+
+        if($selected_ac_year != null || $selected_semester != null ){
+
+            $data['selected_results'] = $user->results()
+                                                    ->whereHas('enrollment',function($query) use($selected_ac_year) {
+                                                        if($selected_ac_year != null) {
+                                                            $query
+                                                                ->select('*')
+                                                                ->where('ac_year', $selected_ac_year);
+                                                        }
+                                                    })
+                                                    ->whereHas('enrollment',function($query) use($selected_semester) {
+                                                        if($selected_semester != null) {
+                                                            $query
+                                                                ->select('*')
+                                                                ->where('semester', $selected_semester);
+                                                        }
+                                                    })->get();
+        }
+        
+        
+        return view('student.result',compact('data',$data))->with('selected_ac_year',$selected_ac_year)->with('selected_semester',$selected_semester);
     }
 
     public function create(Request $request){
@@ -42,6 +66,8 @@ class ResultController extends Controller
 
         $index = 0;
         
+        $subscription->results()->delete();
+
         foreach($subscription->students as $std) {
             $rst = new Result();
             
@@ -53,6 +79,6 @@ class ResultController extends Controller
         }
 
         
-        return view('admin.results');
+        return array("success"=>true, "data" => $subscription);
     }
 }
