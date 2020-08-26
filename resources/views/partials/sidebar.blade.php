@@ -53,7 +53,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ url('student/result')}}">
+                        <a href="{{ url('student/results')}}">
                             <i class="fas fa-chart-line"></i>Results</a>
                     </li>
 
