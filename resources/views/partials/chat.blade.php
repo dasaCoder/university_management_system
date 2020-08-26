@@ -33,18 +33,18 @@
                                             
                                             <div class="au-chat__content">
                                                 <div class="recei-mess-wrap">
-                                                    <span class="mess-time">12 Min ago</span>
+                                                    {{-- <span class="mess-time">12 Min ago</span> --}}
                                                     <div class="recei-mess__inner">
                                                         <div class="avatar avatar--tiny">
                                                             <img src="images/icon/avatar-02.jpg" alt="John Smith">
                                                         </div>
                                                         <div class="recei-mess-list">
-                                                            <div class="recei-mess">Lorem ipsum dolor sit amet, consectetur adipiscing elit non iaculis</div>
-                                                            <div class="recei-mess">Donec tempor, sapien ac viverra</div>
+                                                            {{-- <div class="recei-mess">Lorem ipsum dolor sit amet, consectetur adipiscing elit non iaculis</div> --}}
+                                                            {{-- <div class="recei-mess">Donec tempor, sapien ac viverra</div> --}}
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="send-mess-wrap">
+                                                {{-- <div class="send-mess-wrap">
                                                     <span class="mess-time">30 Sec ago</span>
                                                     <div class="send-mess__inner">
                                                         <div class="send-mess-list">
@@ -60,7 +60,7 @@
                                                         <i class="zmdi zmdi-camera"></i>
                                                     </button>
                                                 </form>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
             </div>
