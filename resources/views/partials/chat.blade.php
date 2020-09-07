@@ -1,4 +1,7 @@
-        <style>
+       
+       @auth
+       
+       <style>
             .chat-window{
                 position: fixed;
                 bottom: 0;
@@ -210,3 +213,6 @@
                 })
         
         </script>
+
+            
+       @endauth
