@@ -22,3 +22,4 @@ Route::post('admin/result/mass','ResultController@create');
 
 Route::post('messages','MessageController@create');
 
+
