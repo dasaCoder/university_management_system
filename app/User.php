@@ -49,9 +49,16 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Course', 'user_courses', 'user_id', 'course_id');
     }
 
+    // get students enrollments
     public function enrollments()
     {
         return $this->belongsToMany('App\CourseSemSubscription', 'subscription_std_table', 'student_id', 'subscription_id');
+    }
+
+    //get lecturer enrollments
+    public function lecEnrollments()
+    {
+        return $this->hasMany('App\CourseSemSubscription','lecturer_id');
     }
 
     public function results(){

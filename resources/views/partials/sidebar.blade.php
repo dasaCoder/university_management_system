@@ -11,11 +11,11 @@
             <ul class="list-unstyled navbar__list">
 
                 @role('admin')
-                    <li>
+                    <li class="active">
                         <a href="{{url('admin')}}">
                         <i class="fas fa-lock"></i> Home</a>
                     </li>
-                    <li class="active has-sub">
+                    <li class="has-sub">
                         <a class="js-arrow" href="#">
                             <i class="fas fa-graduation-cap"></i>Student</a>
                         <ul class="list-unstyled navbar__sub-list js-sub-list">
@@ -58,6 +58,13 @@
                     </li>
 
 
+                @endrole
+
+                @role('lecturer')
+                    <li class="active">
+                        <a href="{{url('lecturer')}}">
+                        <i class="fas fa-lock"></i> Home</a>
+                    </li>
                 @endrole
             </ul>
         </nav>
