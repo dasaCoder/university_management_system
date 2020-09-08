@@ -31,7 +31,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ url('admin/lecturers')}}">
+                        <a href="#">
                             <i class="fas fa-user"></i>Lecturers</a>
                     </li>
                     <li>
