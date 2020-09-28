@@ -2,10 +2,12 @@
 <aside class="menu-sidebar d-none d-lg-block">
     <div class="logo">
         <a href="#">
-            <img src="{{asset('images/icon/logo.png')}}" alt="UniSys" />
+            <h3>Acedamic Pulse</h3>
+
+{{--            <img src="{{asset('images/icon/logo.png')}}" alt="UniSys" />--}}
         </a>
     </div>
-        
+
     <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
@@ -22,7 +24,7 @@
                             <li>
                                 <a href="{{ url('admin/students')}}">Students</a>
                             </li>
-                            
+
                         </ul>
                     </li>
                     <li>
@@ -38,7 +40,7 @@
                         <a href="{{ url('admin/results')}}">
                             <i class="fas fa-chart-pie"></i>Results</a>
                     </li>
-                
+
                 @endrole
 
                 @role('student')
@@ -69,16 +71,18 @@
             </ul>
         </nav>
     </div>
- 
+
 </aside>
 
-@else 
+@else
 
 <aside class="menu-sidebar d-none d-lg-block" style="height: fit-content;">
 
     <div class="logo">
         <a href="#">
-            <img src="{{asset('images/icon/logo.png')}}" alt="UniSys" />
+            <h3>Acedamic Pulse</h3>
+
+{{--            <img src="{{asset('images/icon/logo.png')}}" alt="UniSys" />--}}
         </a>
     </div>
 </aside>

@@ -12,6 +12,10 @@
         <div class="col-md-8 login-wrap">
             <div class="login-content">
                 {{-- <div class="card-header">{{ __('Login') }}</div> --}}
+                
+                <div class="container">
+                    <img src="{{asset('images/logo.jpeg')}}" alt="">
+                </div>
 
                 <div class="login-form">
                     <form method="POST" action="{{ route('login') }}">

@@ -1,6 +1,6 @@
-       
+
        @auth
-       
+
        <style>
             .chat-window{
                 position: fixed;
@@ -19,7 +19,7 @@
                 display: none;
             }
         </style>
-        
+
         <div class="col-lg-4 chat-window">
             <div class="au-card au-card--no-shadow au-card--no-pad m-b-40">
                                     <div class="au-card-title" style="padding-bottom:25px;padding-top:25px;">
@@ -31,18 +31,19 @@
                                         </button> -->
                                     </div>
                                     <div class="au-inbox-wrap js-inbox-wrap">
-                                        
+
                                         <div class="au-chat">
-                                            
+
                                             <div class="au-chat__content">
 
-                                                {{-- <div class="recei-mess-wrap">
+                                                 <div class="recei-mess-wrap">
                                                     <div class="recei-mess__inner">
                                                         <div class="recei-mess-list">
-                                                            <div class="recei-mess">Lorem ipsum dolor sit amet, consectetur adipiscing elit non iaculis</div>
+                                                            <div class="recei-mess">Hi!</div>
+                                                            <div class="recei-mess">How can I help you?</div>
                                                         </div>
                                                     </div>
-                                                </div> --}}
+                                                </div>
 
                                                 {{-- <div class="send-mess-wrap">
                                                     <div class="send-mess__inner">
@@ -69,7 +70,7 @@
                                         crossorigin="anonymous"></script>
                                     <script>
 
-                                        
+
                                         var is_intent_identified = false;
                                         var intent = "";
                                         var userId = "{{ Auth::user()->id}}";
@@ -90,7 +91,7 @@
                                                 e.preventDefault();
                                                 if(is_intent_identified == false){
 
-                                                        
+
                                                         $.ajax({
                                                             type: "post",
                                                             url: "http://127.0.0.1:5000/api/v1/predict",
@@ -100,9 +101,21 @@
                                                             dataType : "json",
                                                             contentType: "application/json; charset=utf-8",
                                                             success : function(result) {
-                                                                
+
                                                                 if(result["result"] == "NOT_FOUND") {
                                                                     is_intent_identified = false;
+
+
+                                                                    $(".au-chat__content").append(
+                                                                        '<div class="recei-mess-wrap">'+
+                                                                        '<div class="recei-mess__inner">'+
+                                                                        ' <div class="recei-mess-list">'+
+                                                                        '<div class="recei-mess">'+
+                                                                        "I didn't get it..." +
+                                                                        '</div></div>'+
+                                                                        '</div>' +
+                                                                        '</div>'
+                                                                    );
                                                                 } else {
                                                                     is_intent_identified = true;
                                                                     intent = result["result"];
@@ -121,17 +134,17 @@
                                                                 }
                                                             },
                                                             complete: function() {
-                                                                                                                               
+
                                                                 $(".au-input").val("");
                                                             },
                                                             error: function() {
                                                                 alert("error occured");
                                                             }
                                                         })
-                                                
+
                                                 } else {
 
-                                                    
+
                                                     $.ajax({
                                                             type: "post",
                                                             url : "{{ url ('/api/messages') }}",
@@ -151,12 +164,12 @@
                                                                         '</div>' +
                                                                     '</div>'
                                                                 );
-                                                                
+
                                                                 if(data['result'] == "Enrolled Successfully!") {
 
                                                                     is_intent_identified = false;
                                                                 }
-                                                            }, 
+                                                            },
                                                             error: function(data) {
                                                                 $(".au-chat__content").append(
                                                                     '<div class="recei-mess-wrap">'+
@@ -171,7 +184,7 @@
                                                             }
                                                         });
 
-                                                    
+
 
                                                     $(".au-input").val("");
 
@@ -200,19 +213,19 @@
                         {
                             "msg":"i'm fine",
                             "sender":"bot"
-                        }, 
+                        },
                         {
-                            
+
                         }
                     ];
-                    
+
                     $('.au-card-title').on('click',()=>{
                         $('.au-chat').toggle();
                     });
 
                 })
-        
+
         </script>
 
-            
+
        @endauth

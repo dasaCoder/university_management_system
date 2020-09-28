@@ -27,7 +27,7 @@ class AdminController extends Controller
         $data = [];
         $data['students'] = Student::getStudents();
         $data['degrees'] = Degree::all();
-        
+
         return view('admin.students', compact('data',$data));
     }
 
@@ -52,7 +52,7 @@ class AdminController extends Controller
 
     public function courses() {
         $data = [];
-        
+
         $data['degrees'] = Degree::all();
         $data['lecturers'] = User::role('lecturer')->get();
         $data['courses'] = Course::all();
