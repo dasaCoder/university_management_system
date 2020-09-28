@@ -16,7 +16,7 @@ class AddRoles extends Migration
         \DB::table('roles')->insert([['name'=>'admin','guard_name'=>'web']]);
         \DB::table('roles')->insert([['name'=>'lecturer','guard_name'=>'web']]);
         \DB::table('roles')->insert([['name'=>'student','guard_name'=>'web']]);
-
+        \DB::table('roles')->insert([['name'=>'financer','guard_name'=>'web']]);
     }
 
     /**
