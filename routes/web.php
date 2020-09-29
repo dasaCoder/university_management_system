@@ -57,5 +57,7 @@ Route::post('/unenroll','CourseController@unenroll');
 
 Route::get('/student/results', 'ResultController@stdProfile');
 
+Route::get('/financer', 'FinancerController@index');
+
 
 
