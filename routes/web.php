@@ -23,6 +23,10 @@ Route::get('/register/student', function() {
     return view('auth.memberRegister');
 });
 
+Route::get('/register/financer', function() {
+    return view('auth.financeRegister');
+});
+
 Route::get('/register/lecturer', function() {
     return view('auth.lecturerRegister');
 });

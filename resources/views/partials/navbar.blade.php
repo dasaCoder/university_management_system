@@ -40,6 +40,11 @@
                                                         <i class="fas fa-user"></i>Register as Lecturer</a>
                                                 </div>
 
+                                                <div class="account-dropdown__item">
+                                                    <a href="{{url('register/financer')}}">
+                                                        <i class="fas fa-user"></i>Register as Financer</a>
+                                                </div>
+
                                             </div>
 
                                         </div>
