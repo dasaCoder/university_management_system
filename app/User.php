@@ -64,4 +64,15 @@ class User extends Authenticatable
     public function results(){
         return $this->hasMany('App\Result');
     }
+
+    public function payments(){
+        return $this->hasMany('App\StudentPayment');
+    }
+
+    public function paymentsForCurrentSem() {
+        return $this->whereHas('payments',function($query){$query->where('semester','2019/2020 Semester I');})->get();
+    }
+
+    //dd($this->payments());
+    
 }

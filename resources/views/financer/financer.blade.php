@@ -13,30 +13,15 @@
                         </div>
 
                         <div class="card-body">
-                            <form action="{{url('course/subscription')}}" method="post" novalidate="novalidate">
+                            <form action="{{url('/financer/payment')}}" method="post" novalidate="novalidate">
                                 {{ csrf_field() }}
                                 
 
                                 <div class="form-group">
-                                    <label for="cc-payment" class="control-label mb-1">Course Module</label>                                    
-                                    <select class="form-control" name="course_id">
-
-                                        @foreach ($data['courses'] as $course)
-                                            <option value="{{ $course->id}}">{{ $course->name }}</option>
-                                        @endforeach
-
-                                    </select>
+                                    <label for="cc-payment" class="control-label mb-1">Student Id</label>  
+                                    <input type="text" class="form-control" name="student_id">                                  
                                 </div>
 
-                                <div class="form-group">
-                                    <label for="cc-payment" class="control-label mb-1">Semester</label>
-                                    <select class="form-control" name="semester">
-                                        <option value="Semester I" selected="selected">Semester I</option>
-                                        <option value="Semester II">Semester II</option>
-                                        <option value="Semester III">Semester III</option>
-                                        <option value="Semester IV">Semester IV</option>
-                                    </select>
-                                </div>
 
                                 <div class="form-group">
                                     <label for="cc-payment" class="control-label mb-1">Acacemic Year</label>
@@ -50,19 +35,24 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="cc-payment" class="control-label mb-1">Lecturer</label>                                    
-                                    <select class="form-control" name="lecturer_id">
-
-                                        @foreach ($data['lecturers'] as $lecturer)
-                                            <option value="{{ $lecturer->id}}">{{ $lecturer->name }}</option>
-                                        @endforeach
-
+                                    <label for="cc-payment" class="control-label mb-1">Semester</label>
+                                    <select class="form-control" name="semester">
+                                        <option value="Semester I" selected="selected">Semester I</option>
+                                        <option value="Semester II">Semester II</option>
+                                        <option value="Semester III">Semester III</option>
+                                        <option value="Semester IV">Semester IV</option>
                                     </select>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Amount</label>  
+                                    <input type="text" class="form-control" name="amount">                                  
                                 </div>
 
                                 <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
                                     <i class="fa fa-save fa-lg"></i>&nbsp;
-                                    <span id="payment-button-amount">Save</span>
+                                    <span id="payment-button-amount">Pay</span>
                                     <span id="payment-button-sending" style="display:none;">Sending…</span>
                                 </button>
 

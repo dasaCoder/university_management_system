@@ -41,6 +41,11 @@
                             <i class="fas fa-chart-pie"></i>Results</a>
                     </li>
 
+                    <li>
+                        <a href="{{ url('financer')}}">
+                            <i class="fas fa-chart-pie"></i>Finance</a>
+                    </li>
+
                 @endrole
 
                 @role('student')
@@ -66,6 +71,13 @@
                     <li class="active">
                         <a href="{{url('lecturer')}}">
                         <i class="fas fa-lock"></i> Home</a>
+                    </li>
+                @endrole
+
+                @role('financer')
+                    <li>
+                        <a href="{{ url('financer')}}">
+                        <i class="fas fa-chart-pie"></i>Finance</a>
                     </li>
                 @endrole
             </ul>

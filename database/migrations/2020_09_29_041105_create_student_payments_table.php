@@ -16,6 +16,7 @@ class CreateStudentPaymentsTable extends Migration
         Schema::create('student_payments', function (Blueprint $table) {
             $table->id();
             $table->string('semester');
+            $table->string('amount');
             $table->dateTime('payed_at');
             $table->integer('user_id');
             $table->timestamps();
