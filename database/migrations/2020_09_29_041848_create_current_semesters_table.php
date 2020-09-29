@@ -17,8 +17,9 @@ class CreateCurrentSemestersTable extends Migration
             $table->id();
             $table->string('academic_year');
             $table->string('semester');
+            $table->string('sem_str');
             $table->dateTime('started_at');
-            $table->dateTime('ended_at');
+            $table->dateTime('ended_at')->nullable();
             $table->boolean('is_current');
         });
     }

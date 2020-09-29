@@ -79,6 +79,11 @@
                         <a href="{{ url('financer')}}">
                         <i class="fas fa-chart-pie"></i>Finance</a>
                     </li>
+
+                    <li>
+                        <a href="{{ url('financer/details')}}">
+                        <i class="fas fa-chart-pie"></i>Payment Details</a>
+                    </li>
                 @endrole
             </ul>
         </nav>

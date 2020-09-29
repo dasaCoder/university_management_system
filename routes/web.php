@@ -62,4 +62,6 @@ Route::get('/financer/details', 'FinancerController@paymentDetails')->name('fina
 Route::post('/financer/payment', 'FinancerController@payment');
 
 
+Route::post('/semester/change','AdminController@changeSem');
+
 

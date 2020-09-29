@@ -10,6 +10,7 @@ use App\Course;
 use App\Degree;
 use App\LectureSession;
 use Carbon\Carbon;
+use App\CurrentSemester;
 
 class AdminController extends Controller
 {
@@ -18,9 +19,15 @@ class AdminController extends Controller
         $courses = Course::all();
         $students = User::role('student')->get();
         $lec_sessions = LectureSession::whereDate('start_time', Carbon::today(+5.30))->get();
+        $current_sem = $this->getCurrentSem();
         //dd($lec_sessions);
 
-        return view('admin.dashboard')->with('degrees',$degrees)->with('courses',$courses)->with('students',$students)->with('lec_sessions',$lec_sessions);
+        return view('admin.dashboard')
+            ->with('degrees',$degrees)
+            ->with('courses',$courses)
+            ->with('students',$students)
+            ->with('lec_sessions',$lec_sessions)
+            ->with('current_sem',$current_sem);
     }
 
     public function students(){
@@ -59,4 +66,26 @@ class AdminController extends Controller
 
         return view('admin.courses')->with('data',$data);
     }
+
+    public function changeSem(Request $request) {
+
+        $all_semesters = CurrentSemester::all();
+        foreach($all_semesters as $semester) {
+            $semester->ended_at = Carbon::now();
+            $semester->timestamps = false;
+            $semester->save();
+        }
+
+        $sem = new CurrentSemester();
+        $sem->academic_year = $request->post('ac_year');
+        $sem->semester = $request->post('semester');
+        $sem->sem_str = $request->post('ac_year'). ' '. $request->post('semester');
+        $sem->started_at = Carbon::now();
+        $sem->timestamps = false;
+        $sem->is_current = true;
+        $sem->save();
+
+        return $this->index();
+    }
+
 }

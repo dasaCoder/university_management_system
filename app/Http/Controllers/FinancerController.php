@@ -44,7 +44,7 @@ class FinancerController extends Controller
 
         $index = 0;
         foreach($data['students'] as $std){
-            $data['students'][$index]['payment'] = $std->payments()->where('semester','2019/2020 Semester I')->first();
+            $data['students'][$index]['payment'] = $std->payments()->where('semester',$this->getCurrentSem()->sem_str)->first();
             $index++;
         }
 

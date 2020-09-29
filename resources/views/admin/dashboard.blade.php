@@ -4,6 +4,10 @@
     {{-- dashboard counts --}}
     <div class="container">
        
+            <div class="col-sm-6">
+                <h2>Current Semester {{ $current_sem->sem_str}}</h2>
+            </div>
+
        <div class="row m-t-25">
    
            <div class="col-sm-6 col-lg-4">
@@ -93,51 +97,7 @@
                     </table>
                 </div>
             </div>
-            {{-- <div class="col-lg-3">
-                <h2 class="title-1 m-b-25">Top countries</h2>
-                <div class="au-card au-card--bg-blue au-card-top-countries m-b-40">
-                    <div class="au-card-inner">
-                        <div class="table-responsive">
-                            <table class="table table-top-countries">
-                                <tbody>
-                                    <tr>
-                                        <td>United States</td>
-                                        <td class="text-right">$119,366.96</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Australia</td>
-                                        <td class="text-right">$70,261.65</td>
-                                    </tr>
-                                    <tr>
-                                        <td>United Kingdom</td>
-                                        <td class="text-right">$46,399.22</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Turkey</td>
-                                        <td class="text-right">$35,364.90</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Germany</td>
-                                        <td class="text-right">$20,366.96</td>
-                                    </tr>
-                                    <tr>
-                                        <td>France</td>
-                                        <td class="text-right">$10,366.96</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Australia</td>
-                                        <td class="text-right">$5,366.96</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Italy</td>
-                                        <td class="text-right">$1639.32</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
+            
         </div>
     </div>
     {{-- end shedule --}}
@@ -226,6 +186,58 @@
             </div>
         </div>
     </div>
+
+    <div class="container">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="mr-2 fa fa-align-justify"></i>
+                            <strong class="card-title" v-if="headerText">Change Current Sem</strong>
+                        </div>
+
+                        <div class="card-body">
+                            <form action="{{url('/semester/change')}}" method="post" novalidate="novalidate">
+                                {{ csrf_field() }}
+                                
+
+
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Acacemic Year</label>
+                                    <select class="form-control" name="ac_year">
+                                        <option value="2019/2020" selected>2019/2020</option>
+                                        <option value="2020/2021">2020/2021</option>
+                                        <option value="2021/2022">2021/2022</option>
+                                        <option value="2022/2023">2022/2023</option>
+        
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Semester</label>
+                                    <select class="form-control" name="semester">
+                                        <option value="Semester I" selected="selected">Semester I</option>
+                                        <option value="Semester II">Semester II</option>
+                                        <option value="Semester III">Semester III</option>
+                                        <option value="Semester IV">Semester IV</option>
+                                    </select>
+                                </div>
+
+                                <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                                    <i class="fa fa-save fa-lg"></i>&nbsp;
+                                    <span id="payment-button-amount">Pay</span>
+                                    <span id="payment-button-sending" style="display:none;">Sending…</span>
+                                </button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 @endsection
