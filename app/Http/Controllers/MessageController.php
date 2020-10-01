@@ -14,8 +14,21 @@ class MessageController extends Controller
     function create(Request $request) {
 
         $user = User::findOrFail($request->post('user_id'));
+        $intent = $request->post('intent');
 
-        $courseId = $request->post("course_id");
+        switch($intent) {
+            case 'ENROLL_COURSE':
+                return $this->enrollForCourse($user, $request->post("course_id"));
+                break;
+            default:
+                return 'No Valid Response';
+
+        }
+
+        
+    }
+
+    public function enrollForCourse($user, $courseId) {
         $course = Course::where('courseId', $courseId)->get();
 
         if(!isset($course[0])) {

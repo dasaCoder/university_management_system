@@ -15,7 +15,10 @@
                                     <option value="">---</option>
                                     @foreach ($data['subscriptions'] as $subscription)
                                         <option 
-                                            value="{{ $subscription->id}}" {{ $data['selected_subscription']->id == $subscription->id? 'selected':''}}>
+                                            value="{{ $subscription->id}}" 
+                                            {{ $data['selected_subscription']? $data['selected_subscription']->id == $subscription->id? 'selected':'' : ''}}
+                                        
+                                        >
                                             {{ $subscription->ac_year." ".$subscription->semester." ".$subscription->course->courseId}}
                                         </option>
                                     @endforeach

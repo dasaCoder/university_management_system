@@ -77,8 +77,11 @@ class ResultController extends Controller
             $std->results()->save($rst);
             $index++;
         }
-
-        
+    
         return array("success"=>true, "data" => $subscription);
+    }
+
+    public function getResultForSubject(){
+        
     }
 }
