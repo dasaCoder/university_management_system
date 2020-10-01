@@ -140,6 +140,12 @@
                         showResponse(data['result']);
                     }
                 });
+
+                is_intent_identified = false;
+                is_intent_completed = false;
+                parameter_index = 0;
+                intent = "";
+                reqObj = {};
             }
 
             function mapIntent(text) {
@@ -184,9 +190,7 @@
                     ['courseId', 'course id']
                 ],
                 "GET_RESULT": [
-                    ['courseId', 'course id'],
-                    ['semester','semester'],
-                    ['ac_year','academic year']
+                    ['courseId', 'course id']
                 ]
             };
 
@@ -210,8 +214,9 @@
                     mapIntent($(".au-input").val());
 
                 } else {
-                    console.log(INTENT_LIST[intent][(parameter_index-1)][0]);
+
                     reqObj[INTENT_LIST[intent][(parameter_index-1)][0]] = $(".au-input").val();
+
                     if (parameter_index == INTENT_LIST[intent].length) {
                         sendProcessedMsgToServer(reqObj);
                     } else {
