@@ -74,6 +74,9 @@
                     '</div></div>' +
                     '</div>' +
                     '</div>');
+                    
+                $('.au-chat__content').animate({scrollTop: $('.au-chat__content').height()});
+
             }
 
             function showDidNotGetIt() {
@@ -85,6 +88,8 @@
                     '</div></div>' +
                     '</div>' +
                     '</div>');
+                
+                $('.au-chat__content').animate({scrollTop: $('.au-chat__content').height()});
             }
 
             function showUserMsg(msgBody) {
@@ -98,6 +103,7 @@
                     '</div>' +
                     '</div>'
                 );
+                $('.au-chat__content').animate({scrollTop: $('.au-chat__content').height()});
             }
 
             function showResponse(reply) {
@@ -111,12 +117,11 @@
                     '</div>' +
                     '</div>'
                 );
+                $('.au-chat__content').animate({scrollTop: $('.au-chat__content').height()});
+
             }
 
-            // {
-            //             "user_id": userId,
-            //             "course_id": $(".au-input").val()
-            //         }
+            
             function sendProcessedMsgToServer(reqObj) {
                 $.ajax({
                     type: "post",
@@ -177,6 +182,11 @@
             const INTENT_LIST = {
                 "ENROLL_COURSE": [
                     ['courseId', 'course id']
+                ],
+                "GET_RESULT": [
+                    ['courseId', 'course id'],
+                    ['semester','semester'],
+                    ['ac_year','academic year']
                 ]
             };
 
