@@ -9,6 +9,9 @@ use App\Course;
 use Auth;
 use App\User;
 use App\Result;
+use Carbon\Carbon;
+use Exception;
+use App\LectureSession;
 
 class MessageController extends Controller
 {
@@ -21,11 +24,30 @@ class MessageController extends Controller
         switch ($intent) {
             case 'ENROLL_COURSE':
                 return $this->enrollForCourse($user, $request->post("courseId"));
+
             case 'GET_RESULT':
                 return $this->getResult($user,$request->post("courseId"));
+
+            case 'ARRANGE_LECTURE':
+                $c = $request->post("courseId");
+                $dt = $request->post("date");
+                $st = $request->post("startTime");
+                $et = $request->post("endTime");
+                $acYr = $request->post("acYear");
+                $l = $request->post("lecHall");
+                return $this->arrangeLecture($user,$c,$acYr,$dt,$st,$et,$l);
+
+            case 'TODAY_LECTURES':
+                return $this->getTodayLectures($user);
+
             default:
                 return 'No Valid Response';
         }
+    }
+
+    public function getTodayLectures($user) {
+        $base_url = url('/shedule/today');
+        return array('result'=> 'Please go to the following link <a href="'.$base_url.'">here</a>');
     }
 
     public function enrollForCourse($user, $courseId)
@@ -73,5 +95,44 @@ class MessageController extends Controller
         }
         
         return array("result"=>"Result for ".$course->courseId. " is ".$result->grade);
+    }
+
+    public function arrangeLecture($user,$courseId,$acYr,$date,$startTime,$endTime,$lecHall){
+        
+        $course = Course::where('courseId', $courseId)->first();
+
+        if (!isset($course)) {
+            return array("result" => "Invalid course Id");
+        }
+
+        $courseSemSubscription = CourseSemSubscription::where('ac_year', $acYr)
+            ->where('course_id', $course->id)
+            ->first();
+
+        if (!isset($courseSemSubscription)) {
+            return array("result" => "No subscription available");
+        }
+
+        try{
+            $startT = Carbon::createFromFormat('Y/m/d H:i',$date.' '.$startTime);
+            $endT = Carbon::createFromFormat('Y/m/d H:i',$date.' '.$endTime);
+        } catch(Exception $e){
+            return array("result" => "Wrong date/time format");
+        }
+
+        try{
+            $session = new LectureSession();
+            $session->start_time = $startT;
+            $session->end_time  = $endT;
+            $session->course_id = $courseSemSubscription->id;
+            $session->lec_hall = $lecHall;
+            $session->ac_year = $acYr;
+            $session->save();
+        }catch(Exception $e){
+            return array("result" => "Error occured!");
+        }
+
+        return array("result" => "Sheduled Successfully");
+
     }
 }

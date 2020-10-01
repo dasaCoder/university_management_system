@@ -11,10 +11,12 @@ use App\Degree;
 use App\LectureSession;
 use Carbon\Carbon;
 use App\CurrentSemester;
+use Auth;
 
 class AdminController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $degrees = Degree::all();
         $courses = Course::all();
         $students = User::role('student')->get();
@@ -23,22 +25,56 @@ class AdminController extends Controller
         //dd($lec_sessions);
 
         return view('admin.dashboard')
-            ->with('degrees',$degrees)
-            ->with('courses',$courses)
-            ->with('students',$students)
-            ->with('lec_sessions',$lec_sessions)
-            ->with('current_sem',$current_sem);
+            ->with('degrees', $degrees)
+            ->with('courses', $courses)
+            ->with('students', $students)
+            ->with('lec_sessions', $lec_sessions)
+            ->with('current_sem', $current_sem);
     }
 
-    public function students(){
+    public function viewTodayShedule()
+    {
+        $user = Auth::user();
+
+        switch ($user->getRoleNames()->first()) {
+            case 'admin':
+                $lec_sessions = LectureSession::whereDate('start_time', Carbon::today(+5.30))->get();
+                break;
+            case 'lecturer':
+                $lec_sessions = LectureSession::whereDate('start_time', Carbon::today(+5.30))
+                    ->whereHas('semSubscription.lecturer', function ($query) use ($user) {
+                        $query->where('users.id', $user->id);
+                    })->get();
+
+                break;
+            case 'student':
+                $lec_sessions = LectureSession::whereDate('start_time', Carbon::today(+5.30))
+                    ->whereHas('semSubscription.students', function ($query) use ($user) {
+                        $query->where('users.id', $user->id);
+                    })->get();
+
+                    
+                break;
+
+            default:
+                return  '/home';
+                break;
+        }
+
+        return view('shedule')->with('lec_sessions', $lec_sessions);
+    }
+
+    public function students()
+    {
         $data = [];
         $data['students'] = Student::getStudents();
         $data['degrees'] = Degree::all();
 
-        return view('admin.students', compact('data',$data));
+        return view('admin.students', compact('data', $data));
     }
 
-    public function createStudent(Request $request) {
+    public function createStudent(Request $request)
+    {
         $user = new User();
         $user->password = Hash::make($request->post("password"));
         $user->email = $request->post("email");
@@ -48,29 +84,30 @@ class AdminController extends Controller
         $user->degree_id = $request->post("degree_id");
         $user->save();
 
-        $user->idstr = $user->degree->slug."/". substr($request->post("acyear"),0,4)."/".$user->id;
+        $user->idstr = $user->degree->slug . "/" . substr($request->post("acyear"), 0, 4) . "/" . $user->id;
         $user->save();
 
         $user->assignRole('student');
 
         return redirect()->route('admin.students');
-
     }
 
-    public function courses() {
+    public function courses()
+    {
         $data = [];
 
         $data['degrees'] = Degree::all();
         $data['lecturers'] = User::role('lecturer')->get();
         $data['courses'] = Course::all();
 
-        return view('admin.courses')->with('data',$data);
+        return view('admin.courses')->with('data', $data);
     }
 
-    public function changeSem(Request $request) {
+    public function changeSem(Request $request)
+    {
 
         $all_semesters = CurrentSemester::all();
-        foreach($all_semesters as $semester) {
+        foreach ($all_semesters as $semester) {
             $semester->ended_at = Carbon::now();
             $semester->timestamps = false;
             $semester->save();
@@ -79,7 +116,7 @@ class AdminController extends Controller
         $sem = new CurrentSemester();
         $sem->academic_year = $request->post('ac_year');
         $sem->semester = $request->post('semester');
-        $sem->sem_str = $request->post('ac_year'). ' '. $request->post('semester');
+        $sem->sem_str = $request->post('ac_year') . ' ' . $request->post('semester');
         $sem->started_at = Carbon::now();
         $sem->timestamps = false;
         $sem->is_current = true;
@@ -87,5 +124,4 @@ class AdminController extends Controller
 
         return $this->index();
     }
-
 }

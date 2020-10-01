@@ -26,4 +26,8 @@ class CourseSemSubscription extends Model
     {
         return $this->hasMany('App\Result','enrollment_id');
     }
+
+    public function lecSessions(){
+        return $this->hasMany('App\LectureSession','course_id');
+    }
 }

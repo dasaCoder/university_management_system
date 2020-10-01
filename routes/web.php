@@ -68,4 +68,7 @@ Route::post('/financer/payment', 'FinancerController@payment');
 
 Route::post('/semester/change','AdminController@changeSem');
 
+// common routes
+Route::get('/shedule/today','AdminController@viewTodayShedule');
+
 

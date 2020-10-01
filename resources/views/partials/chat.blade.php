@@ -66,6 +66,7 @@
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script>
             function getParamMsg(param) {
+                
                 $(".au-chat__content").append('<div class="recei-mess-wrap">' +
                     '<div class="recei-mess__inner">' +
                     ' <div class="recei-mess-list">' +
@@ -107,6 +108,7 @@
             }
 
             function showResponse(reply) {
+                
                 $(".au-chat__content").append(
                     '<div class="recei-mess-wrap">' +
                     '<div class="recei-mess__inner">' +
@@ -123,12 +125,14 @@
 
             
             function sendProcessedMsgToServer(reqObj) {
+                
                 $.ajax({
                     type: "post",
                     url: "{{ url ('/api/messages') }}",
                     data: reqObj,
                     dataType: "json",
                     success: function(data) {
+                        
                         showResponse(data['result']);
 
                         if (data['result'] == "Enrolled Successfully!") {
@@ -170,7 +174,11 @@
                             reqObj['user_id'] = userId;
                             reqObj['intent'] = intent;
 
-                            getParamMsg(INTENT_LIST[intent][parameter_index]);
+                            if(INTENT_LIST[intent].length > 0) {
+                                getParamMsg(INTENT_LIST[intent][parameter_index]);
+                            } else {
+                                sendProcessedMsgToServer(reqObj);
+                            }
                             parameter_index++;
                         }
 
@@ -187,11 +195,20 @@
 
             const INTENT_LIST = {
                 "ENROLL_COURSE": [
-                    ['courseId', 'course id']
+                    ['courseId', 'course id','student']
                 ],
                 "GET_RESULT": [
-                    ['courseId', 'course id']
-                ]
+                    ['courseId', 'course id','student']
+                ],
+                "ARRANGE_LECTURE":[
+                    ['courseId', 'course id','admin'],
+                    ['acYear','academic year'],
+                    ['date','date (YYYY-MM-DD)'],
+                    ['startTime','starting time (HH:MM)'],
+                    ['endTime','ending time (HH:MM)'],
+                    ['lecHall', 'lec Hall']
+                ],
+                "TODAY_LECTURES": []
             };
 
 

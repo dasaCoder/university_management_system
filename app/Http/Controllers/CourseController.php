@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Course;
 use App\LectureSession;
 use App\CourseSemSubscription;
-use DateTime;
 use Carbon\Carbon;
 use Auth;
 

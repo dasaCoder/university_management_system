@@ -55,7 +55,7 @@
                     </li>
 
                     <li>
-                        <a href="{{ url('student')}}">
+                        <a href="{{ url('shedule/today')}}">
                             <i class="fas fa-clock"></i>Time Table</a>
                     </li>
 
