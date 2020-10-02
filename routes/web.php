@@ -37,8 +37,11 @@ Route::get('/register/admin', function() {
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('/admin', 'AdminController@index')->name('admin');
+
 Route::get('/lecturer', 'LecturerController@index')->name('lecturer');
 Route::get('/lecturer/{subscriptionId}/{courseId}', 'LecturerController@courseView');
+Route::get('/lecturer/assignments','AssignmentController@index');
+Route::post('/lecturer/assignments','AssignmentController@createAssignment');
 
 
 Route::get('/student', 'StudentController@index')->name('student');

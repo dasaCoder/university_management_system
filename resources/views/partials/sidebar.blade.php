@@ -72,6 +72,16 @@
                         <a href="{{url('lecturer')}}">
                         <i class="fas fa-lock"></i> Home</a>
                     </li>
+
+                    <li>
+                        <a href="{{ url('shedule/today')}}">
+                            <i class="fas fa-clock"></i>Time Table</a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url('lecturer/assignments')}}">
+                            <i class="fas fa-clock"></i>Assignments</a>
+                    </li>
                 @endrole
 
                 @role('financer')

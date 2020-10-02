@@ -42,10 +42,21 @@ class MessageController extends Controller
 
             case 'UPDATE_PAYMENT_DETAIL':
                 return $this->updatePaymentDetails($user,$request->post('studentId'));
+            
+            case 'UNPAID_LIST':
+                return $this->getUnpaidList($user,$request->post('acYear'));
+
+            case 'ADD_ASSIGNMENT':
+                return $this->addAssignment($user,$request->post("courseId"),$request->post("acYear"));
 
             default:
                 return 'No Valid Response';
         }
+    }
+
+    public function getUnpaidList($user,$acYear){
+        $base_url=url('/financer/details');
+        return array('result'=> 'Please go to the following link <a href="'.$base_url.'?ac_year='.$acYear.'">here</a>');
     }
 
     public function updatePaymentDetails($user,$stdStrId){
@@ -85,6 +96,27 @@ class MessageController extends Controller
         $user->enrollments()->save($courseSemSubscription);
 
         return array("result" => "Enrolled Successfully!");
+    }
+
+    public function addAssignment($user,$courseId,$acYear){
+        $course = Course::where('courseId', $courseId)->first();
+
+        if (!isset($course)) {
+            return array("result" => "Invalid course Id");
+        }
+
+        $courseSemSubscription = $user->lecEnrollments()->where('ac_year', $acYear)
+            ->where('course_id', $course->id)
+            ->first();
+
+        if (!isset($courseSemSubscription)) {
+            return array("result" => "No subscriptions available");
+        }
+
+        $base_url = url('/lecturer/assignments');
+
+        return array('result'=> 'Please go to the following link <a href="'.$base_url.'?subId='.$courseSemSubscription->id.'">here</a>');
+
     }
 
     public function getResult($user, $courseId)

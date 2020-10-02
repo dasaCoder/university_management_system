@@ -211,6 +211,13 @@
                 "TODAY_LECTURES": [],
                 "UPDATE_PAYMENT_DETAIL":[
                     ['studentId','student id (SE/20XX/XX)','financer']
+                ],
+                "UNPAID_LIST":[
+                    ['acYear','academic year','financer']
+                ],
+                "ADD_ASSIGNMENT":[
+                    ['courseId', 'course id','lecturer'],
+                    ['acYear','academic year']
                 ]
             };
 
