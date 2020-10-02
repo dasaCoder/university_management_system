@@ -10,18 +10,25 @@ use Auth;
 
 class FinancerController extends Controller
 {
-    public function index(){
-        return view('financer.financer');
+    public function index(Request $request){
+        $stdId = $request->get('studentId');
+        return view('financer.financer')->with('stdId',$stdId);
     }
 
     public function payment(Request $request){
         $user = Auth::user();
 
+        $payedStd = User::where('idStr',$request->post('student_id'))->first();
+
+        if(!isset($payedStd)){
+            return redirect()->route('finance');
+        }
+
         $payment = new StudentPayment();
         $payment->semester = $request->post('ac_year'). ' '. $request->post('semester');
         $payment->amount = $request->post('amount');
         $payment->payed_at = Carbon::now();
-        $payment->user_id = $user->id;
+        $payment->user_id = $payedStd->id;
         $payment->save();
 
         $data = [];

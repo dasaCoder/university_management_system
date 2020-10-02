@@ -40,9 +40,25 @@ class MessageController extends Controller
             case 'TODAY_LECTURES':
                 return $this->getTodayLectures($user);
 
+            case 'UPDATE_PAYMENT_DETAIL':
+                return $this->updatePaymentDetails($user,$request->post('studentId'));
+
             default:
                 return 'No Valid Response';
         }
+    }
+
+    public function updatePaymentDetails($user,$stdStrId){
+
+        $payedStd = User::where('idStr',$stdStrId)->first();
+
+        if(!isset($payedStd)){
+            return array("result" => "Invalid student Id");
+        }
+
+        $base_url = url('/financer');
+        return array('result'=> 'Please go to the following link <a href="'.$base_url.'?studentId='.$stdStrId.'">here</a>');
+
     }
 
     public function getTodayLectures($user) {

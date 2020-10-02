@@ -19,7 +19,7 @@
 
                                 <div class="form-group">
                                     <label for="cc-payment" class="control-label mb-1">Student Id</label>  
-                                    <input type="text" class="form-control" name="student_id">                                  
+                                    <input type="text" class="form-control" name="student_id" value="{{ $stdId }}">                                  
                                 </div>
 
 

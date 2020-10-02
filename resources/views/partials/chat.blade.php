@@ -208,7 +208,10 @@
                     ['endTime','ending time (HH:MM)'],
                     ['lecHall', 'lec Hall']
                 ],
-                "TODAY_LECTURES": []
+                "TODAY_LECTURES": [],
+                "UPDATE_PAYMENT_DETAIL":[
+                    ['studentId','student id (SE/20XX/XX)','financer']
+                ]
             };
 
 
