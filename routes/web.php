@@ -63,6 +63,7 @@ Route::post('/enroll','CourseController@enroll');
 Route::post('/unenroll','CourseController@unenroll');
 
 Route::get('/student/results', 'ResultController@stdProfile');
+Route::get('student/assignments','AssignmentController@studentAssignments');
 
 Route::get('/financer', 'FinancerController@index')->name('finance');
 Route::get('/financer/details', 'FinancerController@paymentDetails')->name('finance.details');

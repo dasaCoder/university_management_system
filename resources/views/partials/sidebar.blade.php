@@ -64,6 +64,11 @@
                             <i class="fas fa-chart-line"></i>Results</a>
                     </li>
 
+                    <li>
+                        <a href="{{ url('student/assignments')}}">
+                            <i class="fas fa-clock"></i>Assignments</a>
+                    </li>
+
 
                 @endrole
 

@@ -36,4 +36,15 @@ class AssignmentController extends Controller
 
         return $this->index($request);
     }
+
+    public function studentAssignments(){
+        $user = Auth::user();
+        $data = [];
+
+        $data['assignments'] = Assignment::whereHas('courseSubscription.students', function ($query) use ($user) {
+            $query->where('users.id', $user->id);
+        })->get();
+
+        return view('student.assignments',compact('data',$data));
+    }
 }
